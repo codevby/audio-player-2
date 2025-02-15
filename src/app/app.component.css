@@ -1,0 +1,28 @@
+.window-controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  background-color: #333;
+  border-bottom-left-radius: 14px;
+}
+
+.window-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 999999px;
+  transition: all 0.3s ease;
+}
+
+.window-controls button:hover {
+  background-color: #555;
+}

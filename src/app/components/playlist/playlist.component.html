@@ -1,0 +1,18 @@
+<div class="drop-zone"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)">
+
+  @if (files.length === 0){
+  <p>Drag and drop your audio files here</p>
+  } @else{
+  <p>Playlist</p>
+  }
+
+  <ul>
+    @for (file of files; track $index) {
+    <li>{{ file.name }}</li>
+    }
+  </ul>
+
+</div>
