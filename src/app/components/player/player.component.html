@@ -1,6 +1,3 @@
 <div>
-  <button (click)="previousAudio()">Anterior</button>
-  <button (click)="audioPlayer?.pause()">Pausar</button>
-  <button (click)="audioPlayer?.play()">Reproducir</button>
-  <button (click)="nextAudio()">Siguiente</button>
+  <audio controls src="{{ audioFilesPaths[currentFileIndex] }}"></audio>
 </div>

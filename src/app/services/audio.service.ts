@@ -6,11 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AudioService {
 
-  private audioFilesSource = new BehaviorSubject<File[]>([]);
+  private audioFilesSource = new BehaviorSubject<string[]>([]);
   audioFiles$ = this.audioFilesSource.asObservable();
 
-  updateAudioFiles(files: File[]) {
-    this.audioFilesSource.next(files);
+  updateAudioFiles(filesPath: string[]) {
+    this.audioFilesSource.next(filesPath);
+    console.log(filesPath);
   }
 
 }
