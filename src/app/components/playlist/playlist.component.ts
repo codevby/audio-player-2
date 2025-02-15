@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AudioService } from '../../services/audio.service';
 
 @Component({
   selector: 'component-playlist',
@@ -11,8 +12,11 @@ import { Component } from '@angular/core';
 })
 export class PlaylistComponent {
 
+  private audioService = inject(AudioService);
+
   public isDragging = false;
   public files: File[] = [];
+  public filePaths: string[] = [];
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -33,6 +37,7 @@ export class PlaylistComponent {
     if (droppedFiles) {
       const newFiles = Array.from(droppedFiles).filter(file => this.isValidAudioFile(file));
       this.files = [...this.files, ...newFiles];
+      this.audioService.updateAudioFiles(this.files);
     }
   }
 
