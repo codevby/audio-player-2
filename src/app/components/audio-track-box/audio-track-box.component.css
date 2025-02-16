@@ -4,18 +4,19 @@ p {
   font-size: 14px;
   margin: 0px;
   padding: 10px;
+  color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 video {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
 }
 
 .current-song {
-  color: rgb(107, 202, 107);
+  color: var(--primary-color);
 }
 
 button {
@@ -38,7 +39,7 @@ svg {
 button:hover {
   cursor: pointer;
   background-color: white;
-  color: black;
+  color: var(--black-color);
 }
 
 .audio-track-box {
@@ -48,11 +49,11 @@ button:hover {
   justify-content: space-between;
   border-top: 1px dotted rgba(128, 128, 128, 0.2);
   border-radius: 6px;
-  padding: 0px;
+  padding: 0px 10px;
   transition: all 0.3s ease;
 }
 
 .audio-track-box:hover {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(40, 40, 40);
   cursor: pointer;
 }

@@ -15,20 +15,28 @@
   scale: 1.05;
 }
 
+.title-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
 .drop-zone::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
   border: none;
   border-radius: 999px;
   transition: all 0.3s ease;
 }
 
 .drop-zone::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #ccc;
   border-radius: 999px;
 }
 
 .drop-zone::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--black-color);
+  border: 1px solid #ccc;
   border-radius: 999px;
 }
 

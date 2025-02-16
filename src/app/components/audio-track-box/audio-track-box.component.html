@@ -6,7 +6,7 @@
     {{ songId }} : {{ songName }}
   </p>
 
-  @if(isCurrentSongPlaying()){
+  @if(isCurrentSongPlaying() && isPlaying){
   <video
     autoplay
     loop

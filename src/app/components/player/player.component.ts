@@ -58,6 +58,7 @@ export class PlayerComponent implements OnInit {
       this.isPlaying = false;
     }
     this.updateSongPlayingIndex(this.currentFileIndex);
+    this.audioService.setIsSongPlaying(this.isPlaying);
   }
 
   playlistMove(moveTo: string) {

@@ -11,6 +11,9 @@ export class AudioService {
 
   private songPlayingIndex = new BehaviorSubject<number>(0);
 
+  private isSongPlaying = new BehaviorSubject<boolean>(false);
+  isSongPlaying$ = this.isSongPlaying.asObservable();
+
   updateAudioFiles(filesPath: string[]) {
     this.audioFilesSource.next(filesPath);
   }
@@ -21,6 +24,14 @@ export class AudioService {
 
   setSongPlayingIndex(index: number) {
     this.songPlayingIndex.next(index);
+  }
+
+  getIsSongPlaying() {
+    return this.isSongPlaying.asObservable();
+  }
+
+  setIsSongPlaying(isPlaying: boolean) {
+    this.isSongPlaying.next(isPlaying);
   }
 
 }

@@ -49,7 +49,7 @@ svg {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  background-color: #f4f4f4;
+  background-color: #cccccc;
   border-radius: 999px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
 }

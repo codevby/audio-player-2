@@ -40,6 +40,9 @@ export class PlaylistComponent {
     event.preventDefault();
     this.isDragging = false;
 
+    const dragzone = event.target as HTMLElement;
+    dragzone.classList.remove('dragging-over');
+
     const droppedFiles = event.dataTransfer?.files;
 
     if (droppedFiles) {
