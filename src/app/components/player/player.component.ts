@@ -109,7 +109,7 @@ export class PlayerComponent implements OnInit {
       progress = Math.floor((currentTime / duration) * 100) + 1;
     }
 
-    progressBar.style.setProperty('background', `linear-gradient(to right, #007bff ${progress}%,rgb(255, 255, 255) ${progress}%)`);
+    progressBar.style.setProperty('background', `linear-gradient(to right, var(--black-color) ${progress}%,rgb(255, 255, 255) ${progress}%)`);
 
   }
 

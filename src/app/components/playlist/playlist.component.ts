@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, ViewChild, viewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
 
 @Component({
@@ -23,11 +23,15 @@ export class PlaylistComponent {
   onDragOver(event: DragEvent) {
     event.preventDefault();
     this.isDragging = true;
+    const dragzone = event.target as HTMLElement;
+    dragzone.classList.add('dragging-over');
   }
 
   onDragLeave(event: DragEvent) {
     event.preventDefault();
     this.isDragging = false;
+    const dragzone = event.target as HTMLElement;
+    dragzone.classList.remove('dragging-over');
   }
 
   onDrop(event: DragEvent) {

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* --primary-color:
+  --primary-color-dark:
+
+  --secondary-color:
+  --secondary-color-dark: */
+
+  --black-color: #1e1e1e;
+}
+
+@font-face {
+  font-family: 'Varela_Round';
+  src: url('../public/Fonts/Varela_Round/VarelaRound-Regular.ttf') format('truetype');
+}
+
+html,
+body {
+  background-color: var(--black-color);
+  color: white;
+  font-family: 'Varela_Round', sans-serif;
+}
