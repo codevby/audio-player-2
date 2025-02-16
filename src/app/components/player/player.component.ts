@@ -35,6 +35,10 @@ export class PlayerComponent implements OnInit {
     audio.addEventListener('timeupdate', () => {
       this.currentTime = Math.floor(audio.currentTime);
       this.updateProgressBar();
+
+      if (this.currentTime >= this.duration) {
+        this.playlistMove('next');
+      }
     });
 
     this.audioService.audioFiles$.subscribe(filesPaths => {

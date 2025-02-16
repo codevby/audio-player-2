@@ -47,6 +47,12 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   border-top: 1px dotted rgba(128, 128, 128, 0.2);
-  margin: 4px 0px 0px 0px;
+  border-radius: 6px;
   padding: 0px;
+  transition: all 0.3s ease;
+}
+
+.audio-track-box:hover {
+  background-color: rgb(70, 70, 70);
+  cursor: pointer;
 }
