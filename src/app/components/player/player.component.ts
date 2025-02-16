@@ -34,6 +34,7 @@ export class PlayerComponent implements OnInit {
 
     audio.addEventListener('timeupdate', () => {
       this.currentTime = Math.floor(audio.currentTime);
+      this.updateProgressBar();
     });
 
     this.audioService.audioFiles$.subscribe(filesPaths => {
@@ -68,13 +69,6 @@ export class PlayerComponent implements OnInit {
 
       audio.src = this.audioFilesPaths[this.currentFileIndex];
 
-      if (this.isPlaying) {
-        audio.play();
-        this.isPlaying = true;
-      } else {
-        this.isPlaying = false;
-      }
-
     } else if (moveTo === 'previous') {
 
       this.currentFileIndex--;
@@ -84,21 +78,39 @@ export class PlayerComponent implements OnInit {
       }
 
       audio.src = this.audioFilesPaths[this.currentFileIndex];
-
-      if (this.isPlaying) {
-        audio.play();
-        this.isPlaying = true;
-      } else {
-        this.isPlaying = false;
-      }
-
+      this.updateProgressBar();
 
     }
+
+    if (this.isPlaying) {
+      audio.play();
+      this.isPlaying = true;
+    } else {
+      this.isPlaying = false;
+    }
+
   }
 
   seekAudio() {
     const audio = document.getElementById('audio-player') as HTMLAudioElement;
     audio.currentTime = this.currentTime;
+
+    this.updateProgressBar();
+  }
+
+  private updateProgressBar() {
+    const progressBar = document.getElementById('progress-bar') as HTMLInputElement;
+    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+
+    const { currentTime, duration } = audio;
+    let progress = 0;
+
+    if (this.currentTime != 0) {
+      progress = Math.floor((currentTime / duration) * 100) + 1;
+    }
+
+    progressBar.style.setProperty('background', `linear-gradient(to right, #007bff ${progress}%,rgb(255, 255, 255) ${progress}%)`);
+
   }
 
 }

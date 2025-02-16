@@ -13,3 +13,20 @@
   align-items: center;
   gap: 10px;
 }
+
+.progress-bar {
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  outline: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 999px;
+}

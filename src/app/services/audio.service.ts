@@ -11,7 +11,6 @@ export class AudioService {
 
   updateAudioFiles(filesPath: string[]) {
     this.audioFilesSource.next(filesPath);
-    console.log(filesPath);
   }
 
 }
