@@ -1,0 +1,47 @@
+p {
+  text-align: left;
+  width: 90%;
+  font-size: 14px;
+  margin: 0px;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.current-song {
+  color: rgb(107, 202, 107);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: white;
+  padding: 4px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.audio-track-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dotted rgba(128, 128, 128, 0.2);
+  margin: 4px 0px 0px 0px;
+  padding: 0px;
+}

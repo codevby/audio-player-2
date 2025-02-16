@@ -53,6 +53,8 @@ export class PlayerComponent implements OnInit {
       audio.pause();
       this.isPlaying = false;
     }
+    this.updateSongPlayingIndex(this.currentFileIndex);
+
   }
 
   playlistMove(moveTo: string) {
@@ -82,6 +84,8 @@ export class PlayerComponent implements OnInit {
 
     }
 
+    this.updateSongPlayingIndex(this.currentFileIndex);
+
     if (this.isPlaying) {
       audio.play();
       this.isPlaying = true;
@@ -89,6 +93,10 @@ export class PlayerComponent implements OnInit {
       this.isPlaying = false;
     }
 
+  }
+
+  updateSongPlayingIndex(index: number) {
+    this.audioService.setSongPlayingIndex(index);
   }
 
   seekAudio() {

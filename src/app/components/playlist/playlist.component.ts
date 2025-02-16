@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
+import { AudioTrackBoxComponent } from "../audio-track-box/audio-track-box.component";
 
 @Component({
   selector: 'component-playlist',
   imports: [
     CommonModule,
+    AudioTrackBoxComponent
   ],
   templateUrl: './playlist.component.html',
   styleUrl: './playlist.component.css'

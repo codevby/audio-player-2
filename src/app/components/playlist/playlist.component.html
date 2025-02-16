@@ -10,10 +10,12 @@
   <p>Playlist</p>
   }
 
-  <ul>
+  <div class="audio-tracks">
     @for (file of files; track $index) {
-    <li>{{ file.name }}</li>
+    <app-audio-track-box
+      [songName]="file.name"
+      [songId]="$index.toString()"></app-audio-track-box>
     }
-  </ul>
+  </div>
 
 </div>
