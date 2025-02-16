@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AudioService } from '../../services/audio.service';
 
@@ -10,23 +10,28 @@ import { AudioService } from '../../services/audio.service';
   templateUrl: './audio-track-box.component.html',
   styleUrl: './audio-track-box.component.css'
 })
-export class AudioTrackBoxComponent implements OnInit {
+export class AudioTrackBoxComponent implements OnInit, AfterViewInit {
 
   private audioService = inject(AudioService);
+  private videoElement!: HTMLVideoElement;
 
   @Input() songName: string = '';
   @Input() songId: string = '';
 
-  public isPlaying = false;
+  public currentTrack = false;
 
   ngOnInit(): void {
     this.audioService.getSongPlayingIndex().subscribe(index => {
-      this.isPlaying = index.toString() === this.songId;
+      this.currentTrack = index.toString() === this.songId;
     });
   }
 
+  ngAfterViewInit(): void {
+    this.videoElement = document.getElementById('playing-animation') as HTMLVideoElement;
+  }
+
   isCurrentSongPlaying() {
-    return this.isPlaying;
+    return this.currentTrack;
   }
 
 }

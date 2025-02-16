@@ -6,6 +6,16 @@
     {{ songId }} : {{ songName }}
   </p>
 
+  @if(isCurrentSongPlaying()){
+  <video
+    autoplay
+    loop
+    src="/playingAnim.webm"
+    type="video/webm"
+    alt="playing-animation"
+    id="playing-animation"></video>
+  }
+
   <div class="buttons">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

@@ -54,7 +54,6 @@ export class PlayerComponent implements OnInit {
       this.isPlaying = false;
     }
     this.updateSongPlayingIndex(this.currentFileIndex);
-
   }
 
   playlistMove(moveTo: string) {
