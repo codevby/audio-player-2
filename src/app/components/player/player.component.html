@@ -1,3 +1,28 @@
-<div>
-  <audio controls src="{{ audioFilesPaths[currentFileIndex] }}"></audio>
+<div class="audio-player-container">
+
+  <div class="audio-player">
+    <audio id="audio-player"></audio>
+  </div>
+
+  <div class="controls">
+    <h1>{{currentFileIndex}}</h1>
+    <button (click)="playPause()">
+      {{ isPlaying ? 'Pause' : 'Play' }}
+    </button>
+
+    <button (click)="playlistMove( 'next' )">Next</button>
+
+    <button (click)="playlistMove( 'previous' )">Previous</button>
+
+    <input
+      type="range"
+      min="0"
+      [max]="duration"
+      [(ngModel)]="currentTime"
+      (input)="seekAudio()"
+      class="progress-bar" />
+    <span>{{ currentTime | timeFormat }} / {{ duration | timeFormat }}</span>
+
+  </div>
+
 </div>
