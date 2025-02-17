@@ -24,7 +24,6 @@ export class AudioTrackBoxComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.audioService.getSongPlayingIndex().subscribe(index => {
       this.currentTrack = index.toString() === this.songId;
-      console.log('hi')
     });
 
     this.audioService.getIsSongPlaying().subscribe(isPlaying => {
@@ -42,7 +41,6 @@ export class AudioTrackBoxComponent implements OnInit, AfterViewInit {
 
   changeSong(songId: string) {
     this.audioService.setSongPlayingIndex(Number(songId));
-    console.log(songId);
   }
 
 }
