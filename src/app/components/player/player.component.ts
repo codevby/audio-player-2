@@ -47,6 +47,9 @@ export class PlayerComponent implements OnInit {
 
     this.audioService.getSongPlayingIndex().subscribe(index => {
       this.currentFileIndex = index;
+      this.currentTime = 0;
+      this.updateProgressBar();
+
       if (this.isPlaying) {
         this.play();
       }
@@ -56,7 +59,7 @@ export class PlayerComponent implements OnInit {
 
   play() {
     const audio = document.getElementById('audio-player') as HTMLAudioElement;
-
+    audio.currentTime = this.currentTime;
     if (!audio) return;
     audio.pause();
     this.isPlaying = false;
