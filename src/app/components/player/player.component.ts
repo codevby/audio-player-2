@@ -45,6 +45,25 @@ export class PlayerComponent implements OnInit {
       this.audioFilesPaths = filesPaths;
     });
 
+    this.audioService.getSongPlayingIndex().subscribe(index => {
+      this.currentFileIndex = index;
+      if (this.isPlaying) {
+        this.play();
+      }
+    });
+
+  }
+
+  play() {
+    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+
+    if (!audio) return;
+    audio.pause();
+    this.isPlaying = false;
+    audio.src = this.audioFilesPaths[this.currentFileIndex];
+    audio.load();
+    audio.play();
+    this.isPlaying = true;
   }
 
   playPause() {
@@ -58,7 +77,6 @@ export class PlayerComponent implements OnInit {
       audio.pause();
       this.isPlaying = false;
     }
-    this.updateSongPlayingIndex(this.currentFileIndex);
     this.audioService.setIsSongPlaying(this.isPlaying);
   }
 

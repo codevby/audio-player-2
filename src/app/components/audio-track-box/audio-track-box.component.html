@@ -1,6 +1,7 @@
 <div class="audio-track-box">
 
   <p
+    (click)="changeSong(songId)"
     [ngClass]="{ 'current-song': isCurrentSongPlaying() }"
     id="song-info">
     {{ songId }} : {{ songName }}
