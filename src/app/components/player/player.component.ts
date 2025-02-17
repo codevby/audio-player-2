@@ -44,6 +44,7 @@ export class PlayerComponent implements OnInit {
     this.audioService.audioFiles$.subscribe(filesPaths => {
       this.audioFilesPaths = filesPaths;
     });
+
   }
 
   playPause() {
