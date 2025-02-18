@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
 import { AudioTrackBoxComponent } from "../audio-track-box/audio-track-box.component";
+import { AudioFile } from '../../interfaces/audioFile.interface';
 
 @Component({
   selector: 'component-playlist',
@@ -12,7 +13,7 @@ import { AudioTrackBoxComponent } from "../audio-track-box/audio-track-box.compo
   templateUrl: './playlist.component.html',
   styleUrl: './playlist.component.css'
 })
-export class PlaylistComponent {
+export class PlaylistComponent implements OnInit {
 
   private audioService = inject(AudioService);
 
@@ -21,6 +22,13 @@ export class PlaylistComponent {
   public filePaths: string[] = [];
 
   public audioPath = '';
+
+  ngOnInit(): void {
+    this.audioService.audioFiles$.subscribe(audioFiles => {
+      this.files = audioFiles.map(audioFile => audioFile.name);
+      this.filePaths = audioFiles.map(audioFile => audioFile.path);
+    });
+  }
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -49,9 +57,17 @@ export class PlaylistComponent {
       const newFiles = Array.from(droppedFiles).filter(file => this.isValidAudioFile(file));
       this.files = [...this.files, ...newFiles];
 
+      const audioFiles: AudioFile[] = [];
       const filePaths = this.generateFilePaths(this.files);
 
-      this.audioService.updateAudioFiles(filePaths);
+      for (let i = 0; i < this.files.length; i++) {
+        audioFiles.push({
+          name: this.files[i],
+          path: filePaths[i]
+        });
+      }
+
+      this.audioService.updateAudioFiles(audioFiles);
     }
   }
 

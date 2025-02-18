@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AudioFile } from '../interfaces/audioFile.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AudioService {
 
-  private audioFilesSource = new BehaviorSubject<string[]>([]);
+  private audioFilesSource = new BehaviorSubject<AudioFile[]>([]);
   audioFiles$ = this.audioFilesSource.asObservable();
 
   private songPlayingIndex = new BehaviorSubject<number>(0);
@@ -14,8 +15,12 @@ export class AudioService {
   private isSongPlaying = new BehaviorSubject<boolean>(false);
   isSongPlaying$ = this.isSongPlaying.asObservable();
 
-  updateAudioFiles(filesPath: string[]) {
-    this.audioFilesSource.next(filesPath);
+  updateAudioFiles(audioFiles: AudioFile[]) {
+    this.audioFilesSource.next(audioFiles);
+  }
+
+  getAudioFilesPaths() {
+    return this.audioFilesSource.asObservable();
   }
 
   getSongPlayingIndex() {
@@ -34,4 +39,8 @@ export class AudioService {
     this.isSongPlaying.next(isPlaying);
   }
 
+  removeSong(index: number) {
+    this.audioFilesSource.value.splice(index, 1)
+    this.audioFilesSource.next(this.audioFilesSource.value);
+  }
 }

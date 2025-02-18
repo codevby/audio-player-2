@@ -41,13 +41,15 @@ export class PlayerComponent implements OnInit {
       }
     });
 
-    this.audioService.audioFiles$.subscribe(filesPaths => {
-      this.audioFilesPaths = filesPaths;
+    this.audioService.audioFiles$.subscribe(audioFiles => {
+      this.audioFilesPaths = audioFiles.map(audioFile => audioFile.path);
+
     });
 
     this.audioService.getSongPlayingIndex().subscribe(index => {
       this.currentFileIndex = index;
       this.currentTime = 0;
+
       this.updateProgressBar();
 
       if (this.isPlaying) {

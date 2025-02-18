@@ -43,4 +43,8 @@ export class AudioTrackBoxComponent implements OnInit, AfterViewInit {
     this.audioService.setSongPlayingIndex(Number(songId));
   }
 
+  removeSong(songId: string) {
+    this.audioService.removeSong(Number(songId));
+  }
+
 }
