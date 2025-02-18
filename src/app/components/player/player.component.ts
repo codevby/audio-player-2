@@ -36,7 +36,7 @@ export class PlayerComponent implements OnInit {
       this.currentTime = Math.floor(audio.currentTime);
       this.updateProgressBar();
 
-      if (this.isPlaying && this.currentTime >= this.duration) {
+      if (this.isPlaying && this.duration !== 0 && this.currentTime >= this.duration) {
         this.playlistMove('next');
       }
     });
