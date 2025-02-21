@@ -15,7 +15,6 @@
   <div class="audio-tracks-container" id="audio-tracks-container">
     @for (file of files; track $index) {
     <app-audio-track-box
-      class="audio-track-box"
       [songName]="file.name"
       [songId]="$index.toString()"></app-audio-track-box>
     }

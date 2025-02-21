@@ -1,11 +1,20 @@
 <div class="audio-track-box"
   [ngClass]="{ 'current-song': isCurrentSongPlaying() }">
 
-  <p
-    (click)="changeSong(songId)"
-    id="song-info">
-    {{ songId }} - {{ songName }}
-  </p>
+  <div class="audio-track-info">
+    <p
+      (click)="changeSong(songId)"
+      id="song-info">
+      {{ songId }}
+    </p>
+
+    <p
+      class="song-name"
+      (click)="changeSong(songId)"
+      id="song-info">
+      {{ songName }}
+    </p>
+  </div>
 
   @if(isCurrentSongPlaying() && isPlaying){
   <video

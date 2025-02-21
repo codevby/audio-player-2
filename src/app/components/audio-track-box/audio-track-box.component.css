@@ -1,10 +1,13 @@
 p {
   text-align: left;
-  width: 90%;
+  /* width: 90%; */
   font-size: 14px;
   margin: 0px;
   padding: 10px;
   color: var(--black-color);
+}
+
+.song-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -44,6 +47,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   border-radius: 6px;
+  margin: 10px 0px;
   padding: 0px 10px;
   transition: all 0.3s ease;
 }
@@ -51,6 +55,12 @@ button:hover {
 .audio-track-box:hover {
   cursor: pointer;
   background-color: rgb(221, 221, 221);
+}
+
+.audio-track-info {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
 }
 
 .current-song {

@@ -5,7 +5,6 @@
   text-align: center;
   transition: background-color 0.3s ease;
   border-radius: 12px;
-  overflow-y: auto;
   transition: all 0.3s ease;
 }
 
@@ -20,28 +19,30 @@
   padding-bottom: 10px;
 }
 
-.drop-zone::-webkit-scrollbar {
+.audio-tracks-container::-webkit-scrollbar {
   width: 6px;
   border: none;
   border-radius: 999px;
   transition: all 0.3s ease;
 }
 
-.drop-zone::-webkit-scrollbar-track {
+.audio-tracks-container::-webkit-scrollbar-track {
   background-color: #fff;
   border-radius: 999px;
 }
 
-.drop-zone::-webkit-scrollbar-thumb {
+.audio-tracks-container::-webkit-scrollbar-thumb {
   background-color: var(--black-color);
   border: 1px solid #ccc;
   border-radius: 999px;
 }
 
-.drop-zone::-webkit-scrollbar-thumb:hover {
+.audio-tracks-container::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
 }
 
-.audio-tracks {
-  transition: opacity 0.3s ease;
+.audio-tracks-container {
+  overflow-y: auto;
+  height: 100%;
+  padding-right: 10px;
 }
