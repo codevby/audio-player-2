@@ -3,7 +3,11 @@
   --primary-color: #94D693;
   --primary-color-dark: #83ce81;
 
-  --black-color: #1e1e1e;
+  --bkg-color: #eeeeee;
+  --component-bkg-color: #f1f1f1;
+
+  --accent-color: #ffffff;
+  --black-color: #000000;
 }
 
 @font-face {
@@ -13,7 +17,6 @@
 
 html,
 body {
-  background-color: var(--black-color);
-  color: white;
+  background-color: var(--bkg-color);
   font-family: 'Varela_Round', sans-serif;
 }

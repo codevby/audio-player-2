@@ -24,9 +24,12 @@ export class PlayerComponent implements OnInit {
   public isPlaying = false;
   public currentTime = 0;
   public duration = 0;
+  public volume = 1;
 
   ngOnInit(): void {
     const audio = document.getElementById('audio-player') as HTMLAudioElement;
+
+    this.setVolume();
 
     audio.addEventListener('loadedmetadata', () => {
       this.duration = Math.floor(audio.duration);
@@ -90,6 +93,12 @@ export class PlayerComponent implements OnInit {
 
   playlistMove(moveTo: string) {
     const audio = document.getElementById('audio-player') as HTMLAudioElement;
+
+    if (!audio) {
+      console.log('audio is null');
+      return;
+    }
+
     audio.pause();
 
     if (moveTo === 'next') {
@@ -150,6 +159,18 @@ export class PlayerComponent implements OnInit {
 
     progressBar.style.setProperty('background', `linear-gradient(to right, var(--black-color) ${progress}%,rgb(255, 255, 255) ${progress}%)`);
 
+  }
+
+  setVolume() {
+    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+
+    const volumeBar = document.getElementById('volume-bar') as HTMLInputElement;
+
+    audio.volume = this.volume;
+
+    let progress = (audio.volume / 1) * 100;
+
+    volumeBar.style.setProperty('background', `linear-gradient(to right, var(--black-color) ${progress}%,rgb(255, 255, 255) ${progress}%)`);
   }
 
 }

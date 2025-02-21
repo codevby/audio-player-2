@@ -6,7 +6,7 @@ button {
   border: none;
   color: var(--black-color);
   padding: 6px;
-  border-radius: 999px;
+  border-radius: 9999px;
   transition: background-color 0.3s ease, color 0.3s ease, scale 0.3s ease;
 }
 
@@ -17,26 +17,25 @@ button:hover {
   scale: 1.2;
 }
 
-svg {
-  width: 22px;
-  height: 22px;
-}
-
 .audio-player-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80vw;
+  width: 60vw;
   padding: 10px;
-  background-color: #cccccc;
-  border-radius: 999px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
+  background-color: var(--component-bkg-color);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 18px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .controls {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: 10px;
 }
 
@@ -44,13 +43,15 @@ svg {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 90%;
   color: var(--black-color);
+  gap: 10px;
 }
 
 .progress-bar {
   appearance: none;
   width: 100%;
-  height: 4px;
+  height: 3px;
   outline: none;
   border-radius: 999px;
   cursor: pointer;
@@ -81,4 +82,17 @@ svg {
 
 .previous-next-button {
   stroke: var(--black-color);
+}
+
+.volume-bar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.volume-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
