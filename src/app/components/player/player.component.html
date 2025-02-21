@@ -6,17 +6,23 @@
 
   <div class="controls">
 
-    <span>{{ currentTime | timeFormat }} - {{ duration | timeFormat }}</span>
+    <div class="timeline">
 
-    <input
-      id="progress-bar"
-      class="progress-bar"
-      type="range"
-      min="0"
-      [max]="duration"
-      [(ngModel)]="currentTime"
-      (input)="seekAudio()"
-      class="progress-bar" />
+      <span>{{ currentTime | timeFormat }}</span>
+
+      <input
+        id="progress-bar"
+        class="progress-bar"
+        type="range"
+        min="0"
+        [max]="duration"
+        [(ngModel)]="currentTime"
+        (input)="seekAudio()"
+        class="progress-bar" />
+
+      <span>{{ duration | timeFormat }}</span>
+
+    </div>
 
     <div class="buttons">
 

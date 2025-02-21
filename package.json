@@ -8,9 +8,23 @@
     "build": "ng build",
     "electron": "electron .",
     "electron:serve": "npm run start & wait-on http://localhost:4200 && npm run electron",
-    "electron:build": "npm run build && npm run electron",
+    "electron:build": "electron-builder",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
+  },
+  "build": {
+    "appId": "com.audioPlayer.app",
+    "productName": "AudioPlayer",
+    "win": {
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -32,6 +46,7 @@
     "@angular/compiler-cli": "^19.1.0",
     "@types/jasmine": "~5.1.0",
     "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
     "jasmine-core": "~5.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

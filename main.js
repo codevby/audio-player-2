@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const url = require('url');
 
 let mainWindow;
 
@@ -7,20 +8,20 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
-    frame: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
   });
 
-  // Carga el index.html de Angular
+
+  // mainWindow.loadFile(
+  //   path.join(__dirname, 'dist/audio-player-angular-electron/browser/index.html')
+  // );
+
   mainWindow.loadURL(
     'http://localhost:4200'
-    // process.env.NODE_ENV === 'development'
-    //   ? 'http://localhost:4200'
-    //   : `file://${path.join(__dirname, '/dist/audioplayerangular-electron/browser/index.html')}`
-  );
+  )
 
   ipcMain.on('minimize', () => mainWindow.minimize());
   ipcMain.on('maximize', () => mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize());
