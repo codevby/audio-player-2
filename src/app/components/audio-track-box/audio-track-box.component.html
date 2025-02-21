@@ -1,10 +1,10 @@
-<div class="audio-track-box">
+<div class="audio-track-box"
+  [ngClass]="{ 'current-song': isCurrentSongPlaying() }">
 
   <p
     (click)="changeSong(songId)"
-    [ngClass]="{ 'current-song': isCurrentSongPlaying() }"
     id="song-info">
-    {{ songId }} : {{ songName }}
+    {{ songId }} - {{ songName }}
   </p>
 
   @if(isCurrentSongPlaying() && isPlaying){

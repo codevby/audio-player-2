@@ -19,4 +19,5 @@ html,
 body {
   background-color: var(--bkg-color);
   font-family: 'Varela_Round', sans-serif;
+  font-weight: 400;
 }

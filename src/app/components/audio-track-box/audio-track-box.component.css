@@ -4,7 +4,7 @@ p {
   font-size: 14px;
   margin: 0px;
   padding: 10px;
-  color: white;
+  color: var(--black-color);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -15,17 +15,13 @@ video {
   height: 34px;
 }
 
-.current-song {
-  color: var(--primary-color);
-}
-
 button {
   display: flex;
   align-items: center;
   justify-content: center;
   background: none;
   border: none;
-  color: white;
+  color: var(--black-color);
   padding: 4px;
   border-radius: 999px;
   transition: all 0.3s ease;
@@ -47,13 +43,20 @@ button:hover {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px dotted rgba(128, 128, 128, 0.2);
   border-radius: 6px;
   padding: 0px 10px;
   transition: all 0.3s ease;
 }
 
 .audio-track-box:hover {
-  background-color: rgb(40, 40, 40);
   cursor: pointer;
+  background-color: rgb(221, 221, 221);
+}
+
+.current-song {
+  background-color: var(--black-color);
+
+  p {
+    color: white;
+  }
 }
