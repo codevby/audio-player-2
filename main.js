@@ -1,6 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const url = require('url');
 
 let mainWindow;
 
@@ -8,6 +7,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
+    // icon: path.join(__dirname, 'public/logo.ico'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
