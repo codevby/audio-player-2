@@ -154,10 +154,10 @@ export class PlayerComponent implements OnInit {
     let progress = 0;
 
     if (this.currentTime != 0) {
-      progress = Math.floor((currentTime / duration) * 100) + 1;
+      progress = (currentTime / duration) * 100;
     }
 
-    progressBar.style.setProperty('background', `linear-gradient(to right, var(--black-color) ${progress}%,rgb(255, 255, 255) ${progress}%)`);
+    progressBar.style.setProperty('background', `linear-gradient(to right, var(--black-color) ${progress}%,var(--bkg-color) ${progress}%)`);
 
   }
 
@@ -170,7 +170,7 @@ export class PlayerComponent implements OnInit {
 
     let progress = (audio.volume / 1) * 100;
 
-    volumeBar.style.setProperty('background', `linear-gradient(to right, var(--black-color) ${progress}%,rgb(255, 255, 255) ${progress}%)`);
+    volumeBar.style.setProperty('background', `linear-gradient(to right, var(--black-color) ${progress}%, var(--bkg-color) ${progress}%)`);
   }
 
 }

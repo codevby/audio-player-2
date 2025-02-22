@@ -1,6 +1,5 @@
 p {
   text-align: left;
-  /* width: 90%; */
   font-size: 14px;
   margin: 0px;
   padding: 10px;
@@ -37,8 +36,16 @@ svg {
 
 button:hover {
   cursor: pointer;
-  background-color: white;
-  color: var(--black-color);
+  background-color: var(--black-color);
+  color: var(--component-bkg-color);
+}
+
+.current-song {
+  background-color: var(--black-color);
+
+  p {
+    color: var(--component-bkg-color);
+  }
 }
 
 .audio-track-box {
@@ -54,19 +61,15 @@ button:hover {
 
 .audio-track-box:hover {
   cursor: pointer;
-  background-color: rgb(221, 221, 221);
+  background-color: var(--component-bkg-color);
+
+  p {
+    color: var(--black-color);
+  }
 }
 
 .audio-track-info {
   display: flex;
   flex-direction: row;
   width: 90%;
-}
-
-.current-song {
-  background-color: var(--black-color);
-
-  p {
-    color: white;
-  }
 }

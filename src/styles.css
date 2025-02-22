@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --primary-color: #94D693;
-  --primary-color-dark: #83ce81;
+  --accent-color: #FFAF20;
 
-  --bkg-color: #eeeeee;
-  --component-bkg-color: #f1f1f1;
+  --component-bkg-color: #FFFFFF;
 
-  --accent-color: #ffffff;
-  --black-color: #000000;
+  --bkg-color: #fafafa;
+
+  --black-color: #f78522;
+
 }
 
 @font-face {
