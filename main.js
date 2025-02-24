@@ -16,7 +16,7 @@ function createWindow() {
 
 
   // mainWindow.loadFile(
-  //   path.join(__dirname, 'dist/audio-player-angular-electron/browser/index.html')
+  //   path.join(__dirname, 'dist/audio-player-angular-electron/index.html')
   // );
 
   mainWindow.loadURL(
