@@ -121,3 +121,7 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
+
+.shuffle-button {
+  opacity: 0.3;
+}

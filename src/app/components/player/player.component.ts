@@ -25,6 +25,7 @@ export class PlayerComponent implements OnInit {
   public currentTime = 0;
   public duration = 0;
   public volume = 1;
+  public isRandomActive = false;
 
   ngOnInit(): void {
     const audio = document.getElementById('audio-player') as HTMLAudioElement;
@@ -40,7 +41,11 @@ export class PlayerComponent implements OnInit {
       this.updateProgressBar();
 
       if (this.isPlaying && this.duration !== 0 && this.currentTime >= this.duration) {
-        this.playlistMove('next');
+        if (this.isRandomActive) {
+          this.playlistMoveRandom();
+        } else {
+          this.playlistMove('next');
+        }
       }
     });
 
@@ -133,6 +138,22 @@ export class PlayerComponent implements OnInit {
       this.isPlaying = false;
     }
 
+  }
+
+  playlistMoveRandom() {
+    const random = Math.floor(Math.random() * this.audioFilesPaths.length);
+    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    audio.pause();
+    this.currentFileIndex = random;
+    audio.src = this.audioFilesPaths[this.currentFileIndex];
+    audio.load();
+    this.updateProgressBar();
+    this.updateSongPlayingIndex(this.currentFileIndex);
+    audio.play();
+  }
+
+  toggleRandom() {
+    this.isRandomActive = !this.isRandomActive;
   }
 
   updateSongPlayingIndex(index: number) {
