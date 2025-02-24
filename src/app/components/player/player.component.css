@@ -75,6 +75,11 @@ button:hover {
   width: 100%;
 }
 
+.temp {
+  display: flex;
+  flex-direction: row;
+}
+
 .temp,
 .volume-bar-container {
   width: 200px;
@@ -120,8 +125,4 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.shuffle-button {
-  opacity: 0.3;
 }

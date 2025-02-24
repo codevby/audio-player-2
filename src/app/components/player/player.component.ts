@@ -26,6 +26,7 @@ export class PlayerComponent implements OnInit {
   public duration = 0;
   public volume = 1;
   public isRandomActive = false;
+  public isRepeatActive = false;
 
   ngOnInit(): void {
     const audio = document.getElementById('audio-player') as HTMLAudioElement;
@@ -41,10 +42,17 @@ export class PlayerComponent implements OnInit {
       this.updateProgressBar();
 
       if (this.isPlaying && this.duration !== 0 && this.currentTime >= this.duration) {
-        if (this.isRandomActive) {
-          this.playlistMoveRandom();
+
+        if (this.isRepeatActive) {
+          this.currentTime = 0;
+          audio.currentTime = 0;
+          audio.play();
         } else {
-          this.playlistMove('next');
+          if (this.isRandomActive) {
+            this.playlistMoveRandom();
+          } else {
+            this.playlistMove('next');
+          }
         }
       }
     });
@@ -154,6 +162,16 @@ export class PlayerComponent implements OnInit {
 
   toggleRandom() {
     this.isRandomActive = !this.isRandomActive;
+    if (this.isRepeatActive) {
+      this.isRepeatActive = false;
+    }
+  }
+
+  toggleRepeat() {
+    this.isRepeatActive = !this.isRepeatActive;
+    if (this.isRandomActive) {
+      this.isRandomActive = false;
+    }
   }
 
   updateSongPlayingIndex(index: number) {
