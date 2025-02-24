@@ -1,59 +1,92 @@
-# AudioPlayerAngularElectron
+Audio Player - Angular + Electron
+Audio Player is an audio playback application developed with Angular and Electron . This combination allows you to create a modern and functional interface for playing audio files, leveraging Angular for the frontend and Electron for the desktop environment.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+Key Features:
+  -Intuitive user interface built with Angular.
+  -Local audio file playback.
+  -Cross-platform compatibility (Windows, macOS, Linux).
+  -Easy to install and run.
 
-## Development server
+Prerequisites:
+***Before getting started, ensure you have the following installed:
 
-To start a local development server, run:
+  -Node.js (version 18 or higher recommended)
+  -npm (comes bundled with Node.js)
+  -Angular CLI (npm install -g @angular/cli)
+  -Electron
 
-```bash
-ng serve
-```
+Installation:
+  1-Clone this repository:
+    git clone https://github.com/your-username/audio-player-angular-electron.git
+    cd audio-player-angular-electron
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+  2-Install dependencies:
+    npm install
 
-## Code scaffolding
+  3-Running in Development Mode
+  ***To run the application in development mode, follow these steps:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+  -Start the Angular development server:
+    npm start
 
-```bash
-ng generate component component-name
-```
+  -Launch the Electron app in parallel:
+    npm run electron:serve
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+  This will open the application in an Electron window while the Angular development server runs in the background.
 
-```bash
-ng generate --help
-```
+  4-Building for Production
+  ***To build the application for production, follow these steps:
 
-## Building
+  -Build the Angular project:
+    npm run build
 
-To build the project run:
+  -Generate the Electron executable:
+    npm run electron:build
 
-```bash
-ng build
-```
+  The executable file will be generated in the dist-electron folder. Depending on your operating system, you will find the corresponding binaries (e.g., .exe for Windows).
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Useful Commands:
+Here’s a list of the available commands in the package.json file:
 
-## Running unit tests
+  npm start
+  *Starts the Angular development server.
+  
+  npm run build
+  *Builds the Angular project for production.
+  
+  npm run electron
+  *Runs the Electron app directly.
+  
+  npm run electron:serve
+  *Runs the Electron app in development mode with Angular.
+  
+  npm run electron:build
+  *Builds the Electron app for production.
+  
+  npm run watch
+  *Watches for changes in the Angular code and rebuilds automatically.
+  
+  npm test
+  *Runs unit tests with Karma.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Project Structure:
 
-```bash
-ng test
-```
+audio-player-angular-electron/
+├── src/                # Angular source code
+├── dist/               # Output folder for Angular builds
+├── dist-electron/      # Output folder for Electron builds
+├── main.js             # Main Electron file
+├── package.json        # Project configuration and dependencies
+└── README.md           # Project documentation
 
-## Running end-to-end tests
+Contributions:
+Contributions are welcome! If you'd like to improve this application, follow these steps:
 
-For end-to-end (e2e) testing, run:
+  -Fork the repository.
+  -Create a new branch (git checkout -b feature/new-feature).
+  -Make your changes and commit them (git commit -m "Add new feature").
+  -Push your changes (git push origin feature/new-feature).
+  -Open a Pull Request.
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+License:
+This project is licensed under the MIT License . See the LICENSE file for more details.
