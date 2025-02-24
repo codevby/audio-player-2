@@ -10,6 +10,16 @@
 
 }
 
+.dark-theme {
+  --accent-color: #FFAF20;
+
+  --component-bkg-color: #3a3a3a;
+
+  --bkg-color: #2b2b2b;
+
+  --black-color: #FFAF20;
+}
+
 @font-face {
   font-family: 'Varela_Round';
   src: url('../public/Fonts/Varela_Round/VarelaRound-Regular.ttf') format('truetype');
@@ -17,7 +27,11 @@
 
 html,
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   background-color: var(--bkg-color);
   font-family: 'Varela_Round', sans-serif;
   font-weight: 400;
+  transition: background-color 0.6s ease, color 0.6s ease;
 }

@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class ThumbnailComponent {
 
+  public theme: string = 'light';
+
+  toggleTheme() {
+    this.theme = this.theme === 'light' ? 'dark' : 'light';
+    document.body.classList.toggle('dark-theme');
+  }
+
 }
