@@ -23,9 +23,17 @@
     },
     "files": [
       "dist/**/*",
-      "main.js"
+      "main.js",
+      "preload.js"
     ]
   },
+  "fileAssociations": [
+    {
+      "ext": "mp3",
+      "name": "Archivo de audio",
+      "role": "Editor"
+    }
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.1.0",

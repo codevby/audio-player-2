@@ -3,6 +3,7 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { AudioService } from '../../services/audio.service';
 import { AudioTrackBoxComponent } from "../audio-track-box/audio-track-box.component";
 import { AudioFile } from '../../interfaces/audioFile.interface';
+import { ElectronService } from '../../services/electron.service';
 
 @Component({
   selector: 'component-playlist',
@@ -18,6 +19,7 @@ export class PlaylistComponent implements OnInit {
   @ViewChild('fileInput', { static: true }) fileInput!: ElementRef<HTMLInputElement>;
 
   private audioService = inject(AudioService);
+  private ElectronService = inject(ElectronService);
 
   public isDragging = false;
   public files: File[] = [];
@@ -26,6 +28,13 @@ export class PlaylistComponent implements OnInit {
   public audioPath = '';
 
   ngOnInit(): void {
+    // this.ElectronService.listenForFiles().subscribe(filePaths => {
+    //   this.filePaths = filePaths;
+    //   this.audioService.audioFiles$.subscribe(audioFiles => {
+    //     this.filePaths = filePaths;
+    //   });
+    // })
+
     this.audioService.audioFiles$.subscribe(audioFiles => {
       this.files = audioFiles.map(audioFile => audioFile.name);
       this.filePaths = audioFiles.map(audioFile => audioFile.path);

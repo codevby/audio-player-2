@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 declare const window: any;
-const { ipcRenderer } = window.require('electron');
 
 @Component({
   selector: 'component-title-bar',
@@ -14,16 +13,16 @@ export class TitleBarComponent {
   public windowMaximized = false;
 
   minimizeWindow() {
-    ipcRenderer.send('minimize');
+    window.electron.minimizeWindow();
   }
 
   maximizeWindow() {
-    ipcRenderer.send('maximize');
+    window.electron.maximizeWindow();
     this.windowMaximized = !this.windowMaximized;
   }
 
   closeWindow() {
-    ipcRenderer.send('close');
+    window.electron.closeWindow();
   }
 
 }
