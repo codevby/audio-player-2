@@ -7,13 +7,13 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
+    frame: false,
     // icon: path.join(__dirname, 'public/logo.ico'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
   });
-
 
   // mainWindow.loadFile(
   //   path.join(__dirname, 'dist/audio-player-angular-electron/index.html')

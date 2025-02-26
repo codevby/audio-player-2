@@ -25,6 +25,10 @@
   src: url('../public/Fonts/Varela_Round/VarelaRound-Regular.ttf') format('truetype');
 }
 
+* {
+  user-select: none;
+}
+
 html,
 body {
   margin: 0;
@@ -34,4 +38,23 @@ body {
   font-family: 'Varela_Round', sans-serif;
   font-weight: 400;
   transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+.button-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--black-color);
+  color: var(--black-color);
+  padding: 6px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease, scale 0.3s ease;
+}
+
+.button-outline:hover {
+  background-color: var(--black-color);
+  color: var(--component-bkg-color);
+  cursor: pointer;
+  scale: 1.2;
 }

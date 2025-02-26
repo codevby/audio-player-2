@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
 import { AudioTrackBoxComponent } from "../audio-track-box/audio-track-box.component";
 import { AudioFile } from '../../interfaces/audioFile.interface';
@@ -14,6 +14,8 @@ import { AudioFile } from '../../interfaces/audioFile.interface';
   styleUrl: './playlist.component.css'
 })
 export class PlaylistComponent implements OnInit {
+
+  @ViewChild('fileInput', { static: true }) fileInput!: ElementRef<HTMLInputElement>;
 
   private audioService = inject(AudioService);
 
@@ -86,6 +88,40 @@ export class PlaylistComponent implements OnInit {
       filePaths.push(URL.createObjectURL(file));
     }
     return filePaths;
+  }
+
+  addSong() {
+    if (!this.fileInput) {
+      console.log('fileInput is undefined');
+      return;
+    }
+    this.fileInput.nativeElement.click();
+  }
+
+  onFileSelected(event: Event) {
+    console.log('entra en onFileSelected');
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const files = [...input.files];
+      this.updateAudioFiles(files);
+    }
+  }
+
+  updateAudioFiles(files: File[]) {
+    const newFiles = Array.from(files).filter(file => this.isValidAudioFile(file));
+    this.files = [...this.files, ...newFiles];
+
+    const audioFiles: AudioFile[] = [];
+    const filePaths = this.generateFilePaths(this.files);
+
+    for (let i = 0; i < this.files.length; i++) {
+      audioFiles.push({
+        name: this.files[i],
+        path: filePaths[i]
+      });
+    }
+
+    this.audioService.updateAudioFiles(audioFiles);
   }
 
 }
