@@ -1,5 +1,4 @@
 .title-bar {
-  -webkit-app-region: drag;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -15,6 +14,11 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.draggin-window {
+  width: 100%;
+  -webkit-app-region: drag;
 }
 
 .buttons-container {
