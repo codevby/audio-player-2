@@ -50,20 +50,7 @@ export class PlayerComponent implements OnInit {
       this.currentTime = Math.floor(audio.currentTime);
       this.updateProgressBar();
 
-      if (this.isPlaying && this.duration !== 0 && this.currentTime >= this.duration) {
-
-        if (this.isRepeatActive) {
-          this.currentTime = 0;
-          audio.currentTime = 0;
-          audio.play();
-        } else {
-          if (this.isRandomActive) {
-            this.playlistMoveRandom();
-          } else {
-            this.playlistMove('next');
-          }
-        }
-      }
+      this.manageSongEnding();
     });
 
     this.audioService.audioFiles$.subscribe(audioFiles => {
@@ -84,6 +71,25 @@ export class PlayerComponent implements OnInit {
       }
     });
 
+  }
+
+  manageSongEnding() {
+    const audio = this.audioPlayer.nativeElement;
+
+    if (this.isPlaying && this.duration !== 0 && this.currentTime >= this.duration) {
+
+      if (this.isRepeatActive) {
+        this.currentTime = 0;
+        audio.currentTime = 0;
+        audio.play();
+      } else {
+        if (this.isRandomActive) {
+          this.playlistMoveRandom();
+        } else {
+          this.playlistMove('next');
+        }
+      }
+    }
   }
 
   play() {
