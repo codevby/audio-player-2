@@ -68,7 +68,6 @@ export class PlayerComponent implements OnInit {
 
       this.updateProgressBar();
 
-      console.log('CLICK');
       audio.src = this.audioFilesPaths[this.currentFileIndex];
 
       if (this.isPlaying) {

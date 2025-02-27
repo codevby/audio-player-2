@@ -16,13 +16,13 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile(
-    path.join(__dirname, 'dist/audio-player-angular-electron/index.html')
-  );
+  // mainWindow.loadFile(
+  //   path.join(__dirname, 'dist/audio-player-angular-electron/index.html')
+  // );
 
-  // mainWindow.loadURL(
-  //   'http://localhost:4200'
-  // )
+  mainWindow.loadURL(
+    'http://localhost:4200'
+  )
 
   ipcMain.on('minimize', () => mainWindow.minimize());
   ipcMain.on('maximize', () => mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize());

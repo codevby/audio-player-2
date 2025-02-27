@@ -108,7 +108,6 @@ export class PlaylistComponent implements OnInit {
   }
 
   onFileSelected(event: Event) {
-    console.log('entra en onFileSelected');
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const files = [...input.files];

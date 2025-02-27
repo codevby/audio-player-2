@@ -64,3 +64,31 @@ button:hover {
     scale: 1.1;
   }
 }
+
+.theme-button-container {
+  background: var(--component-bkg-color);
+  padding: 10px 8px 6px 8px;
+  border-radius: 999px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.theme-button {
+  margin-top: 16px;
+  background-color: var(--black-color);
+  color: var(--component-bkg-color);
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+
+  svg {
+    scale: 1.0;
+  }
+}
+
+.theme-button:hover {
+  svg {
+    scale: 1.2;
+  }
+}

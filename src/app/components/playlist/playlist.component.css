@@ -10,7 +10,7 @@ button {
 .drop-zone {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 0px 10px 10px 10px;
   text-align: center;
   transition: background-color 0.3s ease;
   border-radius: 12px;
@@ -25,6 +25,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
   color: var(--black-color);
   gap: 20px;
 }
