@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,9 @@ import { TimeFormatPipe } from '../../pipes/time-format.pipe';
 })
 export class PlayerComponent implements OnInit {
 
+  @ViewChild('audioPlayer', { static: true })
+  private audioPlayer!: ElementRef<HTMLAudioElement>;
+
   private audioService = inject(AudioService);
 
   public audioFilesPaths: string[] = [];
@@ -29,7 +32,7 @@ export class PlayerComponent implements OnInit {
   public isRepeatActive = false;
 
   ngOnInit(): void {
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
 
     this.setVolume();
 
@@ -78,7 +81,7 @@ export class PlayerComponent implements OnInit {
   }
 
   play() {
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
     audio.currentTime = this.currentTime;
     if (!audio) return;
     audio.pause();
@@ -90,7 +93,7 @@ export class PlayerComponent implements OnInit {
   }
 
   playPause() {
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
     audio.src = this.audioFilesPaths[this.currentFileIndex];
     audio.currentTime = this.currentTime;
     if (!this.isPlaying) {
@@ -104,7 +107,7 @@ export class PlayerComponent implements OnInit {
   }
 
   playlistMove(moveTo: string) {
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
 
     if (!audio) {
       console.log('audio is null');
@@ -149,7 +152,7 @@ export class PlayerComponent implements OnInit {
 
   playlistMoveRandom() {
     const random = Math.floor(Math.random() * this.audioFilesPaths.length);
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
     audio.pause();
     this.currentFileIndex = random;
     audio.src = this.audioFilesPaths[this.currentFileIndex];
@@ -178,7 +181,7 @@ export class PlayerComponent implements OnInit {
   }
 
   seekAudio() {
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
     audio.currentTime = this.currentTime;
 
     this.updateProgressBar();
@@ -186,7 +189,7 @@ export class PlayerComponent implements OnInit {
 
   private updateProgressBar() {
     const progressBar = document.getElementById('progress-bar') as HTMLInputElement;
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
 
     const { currentTime, duration } = audio;
     let progress = 0;
@@ -200,7 +203,7 @@ export class PlayerComponent implements OnInit {
   }
 
   setVolume() {
-    const audio = document.getElementById('audio-player') as HTMLAudioElement;
+    const audio = this.audioPlayer.nativeElement;
 
     const volumeBar = document.getElementById('volume-bar') as HTMLInputElement;
 
