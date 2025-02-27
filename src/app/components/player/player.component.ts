@@ -19,6 +19,12 @@ export class PlayerComponent implements OnInit {
   @ViewChild('audioPlayer', { static: true })
   private audioPlayer!: ElementRef<HTMLAudioElement>;
 
+  @ViewChild('progressBar', { static: true })
+  private progressBar!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('volumeBar', { static: true })
+  private volumeBar!: ElementRef<HTMLInputElement>;
+
   private audioService = inject(AudioService);
 
   public audioFilesPaths: string[] = [];
@@ -188,7 +194,7 @@ export class PlayerComponent implements OnInit {
   }
 
   private updateProgressBar() {
-    const progressBar = document.getElementById('progress-bar') as HTMLInputElement;
+    const progressBar = this.progressBar.nativeElement;
     const audio = this.audioPlayer.nativeElement;
 
     const { currentTime, duration } = audio;
@@ -205,7 +211,7 @@ export class PlayerComponent implements OnInit {
   setVolume() {
     const audio = this.audioPlayer.nativeElement;
 
-    const volumeBar = document.getElementById('volume-bar') as HTMLInputElement;
+    const volumeBar = this.volumeBar.nativeElement;
 
     audio.volume = this.volume;
 
