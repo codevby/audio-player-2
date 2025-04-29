@@ -16,20 +16,21 @@ function createWindow() {
     },
   });
 
-  // mainWindow.loadFile(
-  //   path.join(__dirname, 'dist/audio-player-angular-electron/index.html')
-  // );
+  mainWindow.loadFile(
+    path.join(__dirname, 'dist/audio-player-angular-electron/index.html')
+  );
 
-  mainWindow.loadURL(
-    'http://localhost:4200'
-  )
+  // mainWindow.loadURL(
+  //   'http://localhost:4200'
+  // )
 
   ipcMain.on('minimize', () => mainWindow.minimize());
   ipcMain.on('maximize', () => mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize());
   ipcMain.on('close', () => mainWindow.close());
 
-  ipcMain.handle('get-open-files', () => {
-    return process.argv.slice(1);
+  ipcMain.on('get-file-path', (event) => {
+    const filePaths = global.sharedFilePaths || [];
+  event.returnValue = filePaths.length > 0 ? filePaths[0] : null;
   });
 
   mainWindow.on('closed', () => {
@@ -38,15 +39,13 @@ function createWindow() {
 }
 
 // app.on('ready', createWindow);
-
 app.on('ready', () => {
   createWindow();
 
   if (process.argv.length > 1) {
-    const filePaths = process.argv.slice(1);
-    console.log('archivos abiertos: ', filePaths);
+    const filePaths = process.argv.slice(1).filter(path => !path.startsWith('--'));
 
-    mainWindow.webContents.send('open-files', filePaths);
+    global.sharedFilePaths = filePaths;
   }
 });
 
