@@ -18,8 +18,6 @@ export class PlaylistComponent implements OnInit {
 
   @ViewChild('fileInput', { static: true }) fileInput!: ElementRef<HTMLInputElement>;
 
-  //Just a comentary
-
   private audioService = inject(AudioService);
   private ElectronService = inject(ElectronService);
 
