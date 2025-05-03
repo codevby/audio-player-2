@@ -18,6 +18,8 @@ export class PlaylistComponent implements OnInit {
 
   @ViewChild('fileInput', { static: true }) fileInput!: ElementRef<HTMLInputElement>;
 
+  //Just a comentary
+
   private audioService = inject(AudioService);
   private ElectronService = inject(ElectronService);
 
@@ -28,12 +30,6 @@ export class PlaylistComponent implements OnInit {
   public audioPath = '';
 
   ngOnInit(): void {
-    // this.ElectronService.listenForFiles().subscribe(filePaths => {
-    //   this.filePaths = filePaths;
-    //   this.audioService.audioFiles$.subscribe(audioFiles => {
-    //     this.filePaths = filePaths;
-    //   });
-    // })
 
     this.audioService.audioFiles$.subscribe(audioFiles => {
       this.files = audioFiles.map(audioFile => audioFile.name);
