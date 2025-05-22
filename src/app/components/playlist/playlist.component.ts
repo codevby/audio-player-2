@@ -16,8 +16,6 @@ import { ElectronService } from '../../services/electron.service';
 })
 export class PlaylistComponent implements OnInit {
 
-  //Coment
-
   @ViewChild('fileInput', { static: true }) fileInput!: ElementRef<HTMLInputElement>;
 
   private audioService = inject(AudioService);
